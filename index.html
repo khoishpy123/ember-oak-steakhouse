@@ -177,6 +177,23 @@
   .card .price{margin-top:26px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:22px;color:var(--brass)}
   .card .weight{color:var(--ash-dim);font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-top:4px}
 
+  /* ---------- story ---------- */
+  .story{padding:clamp(84px,14vh,168px) clamp(24px,6vw,90px);border-top:1px solid var(--line);background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,0))}
+  .story-intro{max-width:760px;margin:0 auto 60px;text-align:center}
+  .story-intro .eyebrow{margin-bottom:22px}
+  .story-intro h2{font-family:"Cormorant Garamond",serif;font-weight:300;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(30px,5vw,58px);line-height:1.05;text-wrap:balance}
+  .story-intro .lead{color:#c7bda9;font-size:clamp(15px,1.7vw,18px);line-height:1.85;margin:26px auto 0;max-width:58ch}
+  .timeline{max-width:720px;margin:0 auto;position:relative}
+  .timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--ember),rgba(196,106,59,.28) 72%,transparent)}
+  .chapter{position:relative;padding:0 0 42px 40px}
+  .chapter:last-child{padding-bottom:0}
+  .chapter::before{content:"";position:absolute;left:0;top:6px;width:11px;height:11px;border-radius:50%;background:var(--char);border:1px solid var(--ember);box-shadow:0 0 0 4px var(--char),0 0 12px rgba(196,106,59,.55)}
+  .chapter .yr{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--brass);font-size:16px;letter-spacing:.08em;font-variant-numeric:tabular-nums}
+  .chapter h3{font-family:"Cormorant Garamond",serif;font-weight:400;text-transform:uppercase;letter-spacing:.05em;font-size:23px;margin:5px 0 10px}
+  .chapter p{color:var(--ash);font-size:14.5px;line-height:1.75;max-width:52ch}
+  .story-sign{max-width:720px;margin:52px auto 0;text-align:right;font-family:"Cormorant Garamond",serif;font-style:italic;color:#c7bda9;font-size:19px}
+  @media(max-width:760px){.story-sign{text-align:left}}
+
   .reserve{padding:clamp(90px,16vh,170px) clamp(24px,6vw,90px);text-align:center;border-top:1px solid var(--line)}
   .reserve .eyebrow{margin-bottom:26px}
   .reserve h2{font-family:"Cormorant Garamond",serif;font-weight:300;text-transform:uppercase;letter-spacing:.05em;font-size:clamp(34px,6vw,88px);line-height:.98}
@@ -204,7 +221,7 @@
     <nav>
       <div class="nav-links">
         <a href="#cuts" data-open-menu>Menu</a>
-        <a href="#">Story</a>
+        <a href="#story">Story</a>
         <a href="#reserve">Visit</a>
       </div>
       <a href="#reserve" class="reserve-btn" data-open-book>Reserve</a>
@@ -256,6 +273,37 @@
         <div class="weight">16 oz · Off the bone</div>
       </article>
     </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="story-intro">
+      <div class="eyebrow reveal"><span class="rule"></span>Our Story<span class="rule"></span></div>
+      <h2 class="reveal" style="transition-delay:.06s">Fire is the oldest<br />language we know</h2>
+      <p class="lead reveal" style="transition-delay:.14s">Ember &amp; Oak began with a single question — what does dinner taste like when nothing stands between the meat and the flame? No gas, no shortcuts. Just live oak, salt, and the patience to let the coals do the talking.</p>
+    </div>
+    <div class="timeline">
+      <div class="chapter reveal">
+        <div class="yr">2019</div>
+        <h3>The Oak</h3>
+        <p>A white oak came down in a Cascade windstorm. We hauled it home, split it, and let it season two winters in the rain — the wood that still feeds the hearth today.</p>
+      </div>
+      <div class="chapter reveal" style="transition-delay:.08s">
+        <div class="yr">2021</div>
+        <h3>The Hearth</h3>
+        <p>We built the open fire by hand on Capitol Hill — firebrick, steel, and a grate that cranks up and down over the coals to chase the perfect char.</p>
+      </div>
+      <div class="chapter reveal" style="transition-delay:.16s">
+        <div class="yr">2024</div>
+        <h3>The First Forty</h3>
+        <p>Forty covers a night, cooked entirely over embers, by invitation only. We learned the fire's moods — when to push it, when to wait.</p>
+      </div>
+      <div class="chapter reveal" style="transition-delay:.24s">
+        <div class="yr">2026</div>
+        <h3>Ember &amp; Oak</h3>
+        <p>The doors opened for good. Same fire, same oak, a few more seats at the counter — and a standing invitation to pull up close.</p>
+      </div>
+    </div>
+    <p class="story-sign reveal">— Hana Reyes &amp; the Ember &amp; Oak crew</p>
   </section>
 
   <section class="reserve" id="reserve">
