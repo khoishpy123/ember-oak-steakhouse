@@ -72,7 +72,7 @@
 
   .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px clamp(20px,5vw,40px) 90px;position:relative;overflow:hidden}
   /* full steak photo (contain), edges feathered so they melt into the ground */
-  .hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url("hero.jpg") center center/contain no-repeat;-webkit-mask-image:radial-gradient(80% 84% at 50% 46%,#000 56%,transparent 100%);mask-image:radial-gradient(80% 84% at 50% 46%,#000 56%,transparent 100%)}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url("hero.jpg") center center/contain no-repeat;-webkit-mask-image:radial-gradient(72% 80% at 50% 46%,#000 26%,rgba(0,0,0,.55) 60%,transparent 95%);mask-image:radial-gradient(72% 80% at 50% 46%,#000 26%,rgba(0,0,0,.55) 60%,transparent 95%)}
   /* dark overlay for legibility, sits above the photo, below the text */
   .hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(18,15,12,.8) 0%,rgba(18,15,12,.38) 26%,rgba(18,15,12,.4) 54%,rgba(18,15,12,.95) 100%),radial-gradient(140% 100% at 50% 42%,rgba(18,15,12,.04),rgba(18,15,12,.62) 100%)}
   .hero>*{position:relative;z-index:1}
