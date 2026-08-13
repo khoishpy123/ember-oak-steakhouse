@@ -219,8 +219,9 @@
   addEventListener('scroll', () => { header.classList.toggle('scrolled', scrollY > 40); });
 
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: .18 });
+    // toggle so each section replays its reveal every time it scrolls into view
+    entries.forEach(e => { e.target.classList.toggle('in', e.isIntersecting); });
+  }, { threshold: .18, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   requestAnimationFrame(() => {
     document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('in'));
