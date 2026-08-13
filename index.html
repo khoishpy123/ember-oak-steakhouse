@@ -26,11 +26,14 @@
 
   .atmos{position:fixed;inset:0;z-index:0;pointer-events:none}
   .atmos .glow{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;mix-blend-mode:screen}
-  .glow.a{width:60vw;height:60vw;left:52%;top:26%;background:radial-gradient(circle,rgba(196,106,59,.55),rgba(196,106,59,0) 62%);animation:flicker 7s ease-in-out infinite}
-  .glow.b{width:42vw;height:42vw;left:8%;top:58%;background:radial-gradient(circle,rgba(138,43,30,.5),rgba(138,43,30,0) 62%);animation:flicker 9s ease-in-out infinite reverse}
+  .glow.a{width:60vw;height:60vw;left:52%;top:26%;background:radial-gradient(circle,rgba(196,106,59,.55),rgba(196,106,59,0) 62%);animation:driftA 30s ease-in-out infinite,flickA 6.5s ease-in-out infinite}
+  .glow.b{width:42vw;height:42vw;left:8%;top:58%;background:radial-gradient(circle,rgba(138,43,30,.5),rgba(138,43,30,0) 62%);animation:driftB 38s ease-in-out infinite,flickB 8.5s ease-in-out infinite}
   .vignette{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 30%,transparent 40%,rgba(0,0,0,.55) 100%)}
   .grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  @keyframes flicker{0%,100%{opacity:.5;transform:scale(1)}45%{opacity:.68;transform:scale(1.05)}70%{opacity:.44;transform:scale(.98)}}
+  @keyframes driftA{0%{transform:translate(0,0) scale(1)}25%{transform:translate(-5vw,4vh) scale(1.1)}50%{transform:translate(5vw,-3vh) scale(.94)}75%{transform:translate(-4vw,4vh) scale(1.05)}100%{transform:translate(0,0) scale(1)}}
+  @keyframes driftB{0%{transform:translate(0,0) scale(1)}30%{transform:translate(8vw,-5vh) scale(1.13)}60%{transform:translate(-6vw,5vh) scale(.9)}100%{transform:translate(0,0) scale(1)}}
+  @keyframes flickA{0%,100%{opacity:.5}45%{opacity:.66}70%{opacity:.42}}
+  @keyframes flickB{0%,100%{opacity:.5}40%{opacity:.62}75%{opacity:.4}}
 
   .embers{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
   .ember{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:var(--ember);box-shadow:0 0 6px 1px rgba(196,106,59,.8);animation:rise linear infinite;opacity:0}
