@@ -24,6 +24,13 @@
   body{background:var(--char);color:var(--bone);font-family:"Jost",system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   ::selection{background:var(--ember);color:#140f0b}
 
+  /* --- accessibility & touch pass (ui-ux-pro-max) --- */
+  a,button,input,select,textarea,.nav-item,.cta,.card,.reserve-btn{touch-action:manipulation}
+  :focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:2px}
+  #main:focus{outline:none}
+  .skip{position:fixed;top:-70px;left:16px;z-index:200;background:var(--bone);color:#140f0b;padding:11px 18px;border-radius:8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;transition:top .25s ease}
+  .skip:focus{top:16px}
+
   .atmos{position:fixed;inset:0;z-index:0;pointer-events:none}
   .atmos .glow{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;mix-blend-mode:screen}
   .glow.a{width:60vw;height:60vw;left:52%;top:26%;background:radial-gradient(circle,rgba(196,106,59,.55),rgba(196,106,59,0) 62%);animation:driftA 30s ease-in-out infinite,flickA 6.5s ease-in-out infinite}
@@ -88,7 +95,7 @@
   .field.full{grid-column:1 / -1}
   .field label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash)}
   .field label .req{color:var(--ember)}
-  .field input,.field select,.field textarea{background:var(--char);border:1px solid var(--line);border-radius:8px;padding:13px 14px;color:var(--bone);font-family:inherit;font-size:14px;outline:none;transition:border-color .25s,background .25s}
+  .field input,.field select,.field textarea{background:var(--char);border:1px solid var(--line);border-radius:8px;padding:14px;color:var(--bone);font-family:inherit;font-size:16px;min-height:48px;transition:border-color .25s,background .25s}
   .field input::placeholder,.field textarea::placeholder{color:var(--ash-dim)}
   .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ember);background:#191410}
   .field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A9081' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
@@ -123,7 +130,7 @@
   nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--ember);transition:width .3s ease}
   nav a:hover{opacity:1}
   nav a:hover::after{width:100%}
-  .reserve-btn{border:1px solid var(--line);padding:12px 22px;letter-spacing:.24em;font-size:11px;text-transform:uppercase;color:var(--bone);transition:background .35s,border-color .35s,color .35s}
+  .reserve-btn{border:1px solid var(--line);padding:15px 24px;letter-spacing:.24em;font-size:11px;text-transform:uppercase;color:var(--bone);transition:background .35s,border-color .35s,color .35s}
   nav a.reserve-btn::after{display:none}
   .reserve-btn:hover{background:var(--bone);color:#140f0b;border-color:var(--bone);opacity:1}
   .nav-links{display:flex;gap:clamp(22px,3vw,44px);align-items:center}
@@ -207,13 +214,14 @@
   @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 </style>
 
-<div class="atmos">
+<a class="skip" href="#main">Skip to content</a>
+<div class="atmos" aria-hidden="true">
   <div class="glow a"></div>
   <div class="glow b"></div>
   <div class="grain"></div>
   <div class="vignette"></div>
 </div>
-<div class="embers" id="embers"></div>
+<div class="embers" id="embers" aria-hidden="true"></div>
 
 <div class="shell">
   <header id="header">
@@ -228,7 +236,7 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <main id="main" tabindex="-1"><section class="hero">
     <div class="eyebrow reveal"><span class="rule"></span>Est. 2026 · Capitol Hill<span class="rule"></span></div>
     <h1 class="display">
       <span class="l1 reveal" style="transition-delay:.08s">Ember</span>
@@ -315,6 +323,8 @@
       <a href="#" class="cta ghost">1400 E Pike St <span class="arr">&rarr;</span></a>
     </div>
   </section>
+
+  </main>
 
   <footer>
     <div class="brand">Ember <b>&amp;</b> Oak</div>
