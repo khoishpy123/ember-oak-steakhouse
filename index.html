@@ -81,6 +81,37 @@
   .mi-meta{color:var(--ash-dim);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:5px}
   .menu-note{text-align:center;color:var(--ash-dim);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:20px;padding-top:26px;border-top:1px solid var(--line)}
 
+  /* ---------- booking form ---------- */
+  .book-panel{width:min(560px,100%)}
+  .book-form{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px}
+  .field{display:flex;flex-direction:column;gap:8px}
+  .field.full{grid-column:1 / -1}
+  .field label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash)}
+  .field label .req{color:var(--ember)}
+  .field input,.field select,.field textarea{background:var(--char);border:1px solid var(--line);border-radius:8px;padding:13px 14px;color:var(--bone);font-family:inherit;font-size:14px;outline:none;transition:border-color .25s,background .25s}
+  .field input::placeholder,.field textarea::placeholder{color:var(--ash-dim)}
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--ember);background:#191410}
+  .field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A9081' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+  .field textarea{resize:vertical;min-height:82px}
+  .book-submit{grid-column:1 / -1;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:12px;padding:16px;border:none;border-radius:8px;background:var(--ember);color:#140f0b;font-family:inherit;font-size:12px;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;transition:background .3s}
+  .book-submit:hover{background:#d0793f}
+  .book-form .book-hint{grid-column:1 / -1;text-align:center;font-size:11px;letter-spacing:.1em;color:var(--ash-dim);margin-top:-2px}
+  .book-success{display:none;text-align:center;padding:14px 0 6px}
+  .menu-modal.done .book-form{display:none}
+  .menu-modal.done .book-success{display:block;animation:fade .5s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .book-success .chk{width:64px;height:64px;border-radius:50%;border:1px solid var(--ember);color:var(--ember);display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+  .book-success .chk svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .book-success h3{font-family:"Cormorant Garamond",serif;font-weight:300;text-transform:uppercase;letter-spacing:.06em;font-size:32px;line-height:1.05}
+  .book-success p{color:var(--ash);font-size:14px;line-height:1.7;max-width:38ch;margin:16px auto 0}
+  .book-success .detail{margin:24px auto 0;max-width:340px;border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;text-align:left}
+  .book-success .detail div{display:flex;justify-content:space-between;font-size:13px}
+  .book-success .detail span:first-child{color:var(--ash-dim);letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+  .book-success .detail span:last-child{color:var(--bone)}
+  .book-success .detail b{font-family:"Cormorant Garamond",serif;font-weight:400}
+  .book-success .again{margin-top:26px;background:none;border:1px solid var(--line);color:var(--bone);border-radius:8px;padding:13px 26px;font-family:inherit;font-size:12px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:background .3s,border-color .3s}
+  .book-success .again:hover{background:var(--ember);border-color:var(--ember);color:#140f0b}
+
   .shell{position:relative;z-index:2}
 
   header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:26px clamp(24px,5vw,64px);transition:background .4s ease,backdrop-filter .4s ease,padding .4s ease}
@@ -176,7 +207,7 @@
         <a href="#">Story</a>
         <a href="#reserve">Visit</a>
       </div>
-      <a href="#reserve" class="reserve-btn">Reserve</a>
+      <a href="#reserve" class="reserve-btn" data-open-book>Reserve</a>
     </nav>
   </header>
 
@@ -188,7 +219,7 @@
     </h1>
     <p class="tagline reveal" style="transition-delay:.3s">Wood-fire steakhouse. Cooked over live oak.</p>
     <div class="cta-row reveal" style="transition-delay:.42s">
-      <a href="#reserve" class="cta">Reserve a table <span class="arr">&rarr;</span></a>
+      <a href="#reserve" class="cta" data-open-book>Reserve a table <span class="arr">&rarr;</span></a>
       <a href="#cuts" class="cta ghost" data-open-menu>View the menu <span class="arr">&rarr;</span></a>
     </div>
     <div class="scroll-cue reveal" style="transition-delay:.6s">
@@ -232,7 +263,7 @@
     <h2 class="reveal" style="transition-delay:.06s">Pull up<br />to the fire</h2>
     <p class="reveal" style="transition-delay:.16s">Dinner Tuesday through Sunday, from five o'clock. The chef's counter seats eight, facing the open hearth — booked two weeks out.</p>
     <div class="cta-row reveal" style="transition-delay:.26s">
-      <a href="#" class="cta">Book a table <span class="arr">&rarr;</span></a>
+      <a href="#" class="cta" data-open-book>Book a table <span class="arr">&rarr;</span></a>
       <a href="#" class="cta ghost">1400 E Pike St <span class="arr">&rarr;</span></a>
     </div>
   </section>
@@ -295,6 +326,80 @@
   </div>
 </div>
 
+<div class="menu-modal" id="bookModal" role="dialog" aria-modal="true" aria-label="Reserve a table" aria-hidden="true">
+  <div class="menu-backdrop" data-close></div>
+  <button class="menu-close" type="button" data-close aria-label="Close">&times;</button>
+  <div class="menu-panel book-panel" role="document">
+    <div class="menu-head">
+      <div class="eyebrow"><span class="rule"></span>Reserve<span class="rule"></span></div>
+      <h2>Book a Table</h2>
+      <p>Dinner nightly from five · confirmed by text</p>
+    </div>
+
+    <form class="book-form" id="bookForm" novalidate>
+      <div class="field full">
+        <label for="bk-name">Full name <span class="req">*</span></label>
+        <input id="bk-name" name="name" type="text" required placeholder="Your name" autocomplete="name" />
+      </div>
+      <div class="field">
+        <label for="bk-phone">Phone <span class="req">*</span></label>
+        <input id="bk-phone" name="phone" type="tel" required placeholder="(206) 555-0000" autocomplete="tel" />
+      </div>
+      <div class="field">
+        <label for="bk-email">Email</label>
+        <input id="bk-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="bk-date">Date <span class="req">*</span></label>
+        <input id="bk-date" name="date" type="date" required />
+      </div>
+      <div class="field">
+        <label for="bk-time">Time <span class="req">*</span></label>
+        <select id="bk-time" name="time" required>
+          <option value="" disabled selected>Select…</option>
+          <option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option>
+          <option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option><option>8:30 PM</option>
+          <option>9:00 PM</option><option>9:30 PM</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="bk-party">Party size <span class="req">*</span></label>
+        <select id="bk-party" name="party" required>
+          <option value="" disabled selected>Select…</option>
+          <option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option>
+          <option>5 guests</option><option>6 guests</option><option>7 guests</option><option>8 guests</option>
+          <option>9+ (please call)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="bk-occasion">Occasion</label>
+        <select id="bk-occasion" name="occasion">
+          <option value="">None</option><option>Birthday</option><option>Anniversary</option>
+          <option>Celebration</option><option>Business</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label for="bk-notes">Notes / dietary needs</label>
+        <textarea id="bk-notes" name="notes" placeholder="Allergies, seating preference, high chair…"></textarea>
+      </div>
+      <button class="book-submit" type="submit">Request reservation <span aria-hidden="true">&rarr;</span></button>
+      <p class="book-hint">This is a demo — no booking is actually sent.</p>
+    </form>
+
+    <div class="book-success" id="bookSuccess">
+      <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h3>Reservation requested</h3>
+      <p>Thank you, <b id="ok-name">guest</b>. We'll text you shortly to confirm your table at Ember &amp; Oak.</p>
+      <div class="detail">
+        <div><span>When</span><span><b id="ok-when">—</b></span></div>
+        <div><span>Party</span><span id="ok-party">—</span></div>
+        <div><span>Under</span><span id="ok-phone">—</span></div>
+      </div>
+      <button class="again" type="button" id="bookAgain">Book another</button>
+    </div>
+  </div>
+</div>
+
 <script>
   document.body.classList.add('js');
 
@@ -305,6 +410,31 @@
   document.querySelectorAll('[data-open-menu]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); openMenu(); }));
   menu.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', closeMenu));
   addEventListener('keydown', (e) => { if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu(); });
+
+  // ---- booking modal ----
+  const book = document.getElementById('bookModal');
+  const bookForm = document.getElementById('bookForm');
+  const dateInput = document.getElementById('bk-date');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.min = today; dateInput.value = today;
+  const openBook = () => { book.classList.add('open'); book.classList.remove('done'); book.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+  const closeBook = () => { book.classList.remove('open'); book.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+  document.querySelectorAll('[data-open-book]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); openBook(); }));
+  book.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', closeBook));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && book.classList.contains('open')) closeBook(); });
+  bookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!bookForm.reportValidity()) return;
+    const d = new Date(dateInput.value + 'T00:00');
+    const when = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) + ' · ' + document.getElementById('bk-time').value;
+    document.getElementById('ok-name').textContent = document.getElementById('bk-name').value.trim() || 'guest';
+    document.getElementById('ok-when').textContent = when;
+    document.getElementById('ok-party').textContent = document.getElementById('bk-party').value;
+    document.getElementById('ok-phone').textContent = document.getElementById('bk-phone').value.trim();
+    book.classList.add('done');
+    book.querySelector('.menu-panel').scrollTop = 0;
+  });
+  document.getElementById('bookAgain').addEventListener('click', () => { bookForm.reset(); dateInput.value = today; book.classList.remove('done'); });
 
   const header = document.getElementById('header');
   addEventListener('scroll', () => { header.classList.toggle('scrolled', scrollY > 40); });
